@@ -15,23 +15,17 @@ public class GoogleSearchTest {
         WebDriver driver = new EdgeDriver();
 
         try {
-            // Navigate to Google
             driver.get("https://www.google.com");
             driver.manage().window().maximize();
-            // Locate the search bar and input a query
             WebElement searchBox = driver.findElement(By.name("q"));
             searchBox.sendKeys("seo for contractors");
             searchBox.submit();
-
-            // Wait for a few seconds (optional, could use WebDriverWait instead)
             Thread.sleep(2000);
 
-            // Collect the top 10 search result links
             List<WebElement> searchResults = driver.findElements(By.cssSelector("div.yuRUbf a"));
 
-            // Iterate through the top 10 search results
             boolean isPagePresent = false;
-            String targetUrl = "ahrefs.com"; //
+            String targetUrl = "linkgraph.com"; //
 
             for (int i = 0; i < Math.min(searchResults.size(), 10); i++) {
                 String resultUrl = searchResults.get(i).getAttribute("href");
